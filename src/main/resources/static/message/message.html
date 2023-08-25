@@ -1,0 +1,158 @@
+<div class="container" ng-show="isAdmin()">
+    <br>
+    <br>
+    <div class="row page-title ">
+        <div><h3>Создать сообщение</h3></div>
+
+        <div style="margin-left: 40%">
+            <input class="add-btn add-btn-1" type="submit" value="Показать все сообщения" ng-click="show()">
+        </div>
+    </div>
+    <br>
+    <label>Укажите необходимые данные для отправки email: </label>
+    <form class="forms" method="post">
+        <div class="row parts">
+            <label><small>Если сообщение для всех, оставьте это поле пустым</small> </label>
+            <input class="inputs" type="email" id="email" name="email" ng-model="context.emailTo" placeholder="Кому">
+        </div>
+
+        <div class="row parts">
+            <label><small>Текст сообщения. Оставьте это поле пустым, если отправляете только файл</small> </label>
+            <textarea class="inputs" id="msg" name="msg" ng-model="context.message"></textarea>
+        </div>
+
+        <div class="row parts">
+            <label><small>Тема сообщения, если пустое, будет добавлена тема по умолчанию</small> </label>
+            <input class="inputs" type="text" id="subject" name="subject" ng-model="context.subject" placeholder="Тема сообщения">
+        </div>
+
+        <div class="row parts spinner-parts">
+            <label class="row"><small>Выберите файл-вложение: </small> </label>
+            <select class="spinner" name="files" ng-model="context.filename">
+                <option></option>
+                <option ng-repeat="filename in filenames" >{{filename}}</option>
+            </select>
+        </div>
+
+<!--        <div class="row parts">-->
+<!--            <label><small>Путь к прикрепляемому файлу</small> </label>-->
+<!--            <input class="inputs" type="text" id="attachment" name="attachment" ng-model="context.attachment" placeholder="Путь к файлу">-->
+<!--        </div>-->
+
+        <div class="row parts">
+            <label><small>Дата отправки в формате гггг-мм-дд</small> </label>
+            <input class="inputs" type="text" id="sendDate" name="sendDate" ng-model="context.sendDate" placeholder="Дата отправки" required>
+        </div>
+
+        <div class="row parts">
+            <label><small>Время отправки в формате чч:мм</small> </label>
+            <input class="inputs" type="text" id="sendTime" name="sendTime" ng-model="context.sendTime" placeholder="Время отправки" required>
+        </div>
+
+        <div>
+            <input class="add-btn add-btn-1" type="submit" value="Сохранить" ng-click="create()">
+        </div>
+
+    </form>
+
+</div>
+
+
+
+<style>
+  .row {
+    padding-bottom: 5px;
+  }
+
+  .forms {
+    width: 80%;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 40px;
+  }
+
+  .inputs, .pdf-inputs {
+    margin-right: 15px;
+    margin-left: 15px;
+  }
+
+<!--  .spinner {-->
+<!--    width: 40%;-->
+<!--  }-->
+
+  .parts {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    margin: 1%;
+  }
+
+  .main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 40px;
+  }
+
+  input[type=text], input[type=email], input[type = file], select, textarea{
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+      resize: vertical;
+}
+
+.add-btn, .logout-btn {
+  margin-right: 15px;
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.users a {
+  text-decoration: none;
+}
+
+.users a:hover {
+  text-decoration: none;
+  color: yellow;
+}
+
+/* Style the container */
+.container {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+  margin-top: 40px;
+}
+
+.submit {
+    display: flex;
+    justify-content: center;
+}
+
+.email-field {
+  margin-top: 6px;
+  padding: 12px;
+  border-radius: 4px;
+  box-sizing: border-box;
+  resize: vertical;
+}
+
+/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .col-25, .col-75, input[type=submit] {
+    width: 100%;
+    margin-top: 0;
+  }
+}
+
+</style>

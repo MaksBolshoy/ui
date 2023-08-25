@@ -1,0 +1,119 @@
+<div class="main" ng-controller="mainController">
+    <h3>Здравствуйте! </h3>
+    <br>
+    <form method="post">
+        <div class="email-field">
+            <input type="email" id="email" name="email" ng-model="user.email" placeholder="Email" required>
+        </div>
+
+        <br>
+        <div class="submit">
+            <div class="row">
+                <input class="submit-btn" type="submit" value="Подписаться на рассылку" ng-click="register()">
+            </div>
+        </div>
+        <br>
+
+        <div class="submit">
+            <div class="row" ng-show="!isAdmin()">
+                <a class="admin-btn" type="button" href="/#!/login">Войти как админ</a>
+            </div>
+        </div>
+
+        <div class="submit">
+            <div class="row" ng-show="isAdmin()">
+                <a class="admin-btn" type="button" href="/#!/admin">Панель администратора</a>
+            </div>
+        </div>
+
+    </form>
+</div>
+
+<style>
+  form {
+    width: 80%;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 40px;
+  }
+
+  p {
+    text-align: center;
+    font-size: 22px;
+  }
+
+  .main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 40px;
+  }
+
+  input[type=text], input[type=email], select, textarea{
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  resize: vertical;
+}
+
+.submit-btn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.admin-btn {
+  margin-right: 15px;
+  margin-top: 15px;
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.admin-btn:hover {
+  text-decoration: none;
+  color: yellow;
+}
+
+/* Style the container */
+.container {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+  margin-top: 40px;
+}
+
+.submit {
+    display: flex;
+    justify-content: center;
+}
+
+.email-field {
+  margin-top: 6px;
+  padding: 12px;
+  border-radius: 4px;
+  box-sizing: border-box;
+  resize: vertical;
+}
+
+/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .col-25, .col-75, input[type=submit] {
+    width: 100%;
+    margin-top: 0;
+  }
+}
+
+
+</style>
